@@ -6,8 +6,6 @@ import com.bank.oneBank.dto.UserDetailsDto;
 import com.bank.oneBank.dto.UserRequest;
 import com.bank.oneBank.exception.BusinessExecption;
 import com.bank.oneBank.service.UserService;
-import com.bank.oneBank.service.impl.GitHubService;
-import com.bank.oneBank.service.impl.OpenAiService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,9 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.UUID;
 
