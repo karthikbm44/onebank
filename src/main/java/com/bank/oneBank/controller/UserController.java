@@ -31,12 +31,6 @@ public class UserController {
     @Autowired
     private UserService  userService;
 
-    @Autowired
-    private OpenAiService openAiService;
-
-    @Autowired
-    private GitHubService gitHubService;
-
     @Operation(
             summary = "Create New User Account",
             description = "Creating new bank account for a user and assigned with new account number.Email will be sent to the user to update on account creation status."
@@ -96,21 +90,4 @@ public class UserController {
     public UserDetailsDto userDetails(@RequestParam String accountNumber){
         return userService.userDetailsRequest(accountNumber);
     }
-
-    @PostMapping("/suggestion")
-    public String getCodeSuggestions(@RequestBody String prompt){
-        return openAiService.getCodeSuggestions(prompt);
-    }
-
-    @GetMapping("/{owner}/{repo}/{pullNumber}/suggestion")
-    public ResponseEntity<String> getGithubComments(@PathVariable String owner,
-                                                    @PathVariable String repo,
-                                                    @PathVariable String pullNumber){
-        String response= null;
-        String reviewComments = gitHubService.listCommentsForPullRequest(owner,repo,pullNumber);
-        response= openAiService.getCodeSuggestions(reviewComments);
-        return ResponseEntity.ok(response);
-    }
-
-
 }
